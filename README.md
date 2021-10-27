@@ -4,17 +4,17 @@
 This program is exploring how different hash functions can be visualised using a unique type of art generation, by drawing lines based on the hash that each function will create given the same string input.
 
 # How does it work?
-This program uses the hashlib library
+This program uses the hashlib library to implement the different hash functions 
 ```python 
 import hashlib
 ```
 
- to implement the different hash functions and uses PIL
+and uses PIL in order to create the image, draw the lines and save the image. 
  
 ```python
 from PIL import Image
 ```
-in order to create the image, draw the lines and save the image. 
+
 Each character of the hash is converted into a co-ordinate that will be used by the program to draw the lines.
 It uses the normalise() function to make sure the range of numbers from the hash will make an even distribution across the canvas. Then, when the lines are plotted the program will draw a line between each nearest neighbour and another line between the nearest neighbours nearest neighbour.
 I used the spatial import from the scipy library
