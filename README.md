@@ -4,12 +4,12 @@
 This program is exploring how different hash functions can be visualised using a unique type of art generation, by drawing lines based on the hash that each function will create given the same string input.
 
 # How does it work?
-This program uses the hashlib library to implement the different hash functions 
+This program uses the [hashlib](https://docs.python.org/3/library/hashlib.html) library to implement the different hash functions 
 ```python 
 import hashlib
 ```
 
-and uses PIL in order to create the image, draw the lines and save the image. 
+and uses [PIL](https://pillow.readthedocs.io/en/stable/) in order to create the image, draw the lines and save the image. 
  
 ```python
 from PIL import Image
