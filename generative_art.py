@@ -27,7 +27,7 @@ def draw_points(draw: ImageDraw, points: [], num_lines: int):
 def normalise(x: int) -> int:
     x = x**5
     x = x // 1028
-    x = x%500
+    x = x%1000
     return x
 
 def generate_hash_string_md5(s: str):
@@ -59,7 +59,7 @@ def str_generator(size = 10, chars=string.ascii_uppercase + string.digits + stri
 
 def make_image(hash_str: str):
     #Create a new image
-    image_size = 512
+    image_size = 1080
     image_padding = 12
     image_bg_colour = (0, 0, 0)
     image = Image.new(mode="RGB", size=(image_size, image_size), color=image_bg_colour)
@@ -70,6 +70,9 @@ def make_image(hash_str: str):
     points = []
 
     line_colour = (255,255,255)
+
+    for i in range(4):
+        draw.polygon(generate_random_polygon(3, image_size, image_size, image_padding), fill = (random.randint(0,256),random.randint(0,256), random.randint(0,256)))
 
     for i in range(0, len(hash_str), 2):
         x = normalise(ord(hash_str[i]))
@@ -94,6 +97,7 @@ def make_image(hash_str: str):
 
         draw.line(line_xy, fill = line_colour, width = 2)
         draw.line(line_xy2, fill = line_colour, width = 2)
+
 
     #Save image
     #image.save("art/{filename}.png".format(filename = r_str))
@@ -122,7 +126,7 @@ def generate(r_str):
 
     #save_image_sha512(make_image(hash_str_sha512), r_str)
 
-    image = make_image(hash_str_sha1)
+    image = make_image(hash_str_md5)
     image.save("test.png")
 
 
