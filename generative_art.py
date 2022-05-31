@@ -25,8 +25,8 @@ def draw_points(draw: ImageDraw, points: [], num_lines: int):
         draw.line(line_xy, fill=line_colour, width = 2)
 
 def normalise(x: int) -> int:
-    x = x**5
-    x = x // 1028
+    x = x*9000
+    x = x // 128
     x = x%1000
     return x
 
@@ -72,8 +72,8 @@ def make_image(hash_str: str):
     line_colour = (255,255,255)
 
     for i in range(4):
-        draw.polygon(generate_random_polygon(3, image_size, image_size, image_padding), fill = (random.randint(0,256),random.randint(0,256), random.randint(0,256)))
-
+        #draw.polygon(generate_random_polygon(3, image_size, image_size, image_padding), fill = (random.randint(0,256),random.randint(0,256), random.randint(0,256)))
+        draw.polygon(generate_random_polygon(3, image_size, image_size, image_padding), fill = (255,165,0))
     for i in range(0, len(hash_str), 2):
         x = normalise(ord(hash_str[i]))
         y = normalise(ord(hash_str[i+1]))
@@ -125,8 +125,8 @@ def generate(r_str):
     #save_image_sha256(make_image(hash_str_sha256), r_str)
 
     #save_image_sha512(make_image(hash_str_sha512), r_str)
-
-    image = make_image(hash_str_md5)
+    print(hash_str_sha1)
+    image = make_image(hash_str_sha1)
     image.save("test.png")
 
 
